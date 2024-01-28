@@ -1,58 +1,27 @@
-Certainly! Here's an updated README file to include desktop support for your GloboGist multiplatform news aggregator app:
+This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop, Server.
 
----
+* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
+  It contains several subfolders:
+  - `commonMain` is for code that’s common for all targets.
+  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
+    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
+    `iosMain` would be the right folder for such calls.
 
-# GloboGist - Global News Aggregator
+* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
+  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
 
-![GloboGist Logo](/path/to/logo.png)
+* `/server` is for the Ktor server application.
 
-GloboGist is a multiplatform news aggregator app that empowers users to stay updated on global events effortlessly. With seamless cross-platform compatibility, GloboGist delivers a personalized news experience on iOS, Android, desktop, and the web.
+* `/shared` is for the code that will be shared between all targets in the project.
+  The most important subfolder is `commonMain`. If preferred, you can add code to the platform-specific folders here too.
 
-## Features
 
-- **Cross-Platform Compatibility:** GloboGist is built using [Your Framework/Technology], ensuring a consistent user experience across iOS, Android, desktop, and web platforms.
-- **Personalized News Feed:** Tailor your news feed to your interests, ensuring you receive updates on the topics that matter most to you.
-- **Category Exploration:** Dive into news across various categories, including technology, politics, entertainment, and more.
-- **Offline Reading:** Save articles for offline reading, allowing you to stay informed even when an internet connection is not available.
-- **Sharing Options:** Easily share intriguing articles with your friends and followers on your favorite social media platforms.
+Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
+[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
+[Kotlin/Wasm](https://kotl.in/wasm/)…
 
-## Getting Started
+**Note:** Compose/Web is Experimental and may be changed at any time. Use it only for evaluation purposes.
+We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
+If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
 
-To get started with GloboGist, follow the steps below:
-
- **Clone the Repository:**
-    ```bash
-    git clone https://github.com/dev-shushant/GloboGist.git
-    ```
-
-## Platform-Specific Instructions
-
-- **iOS:**
-  - [iOS-specific instructions and setup details]
-
-- **Android:**
-  - [Android-specific instructions and setup details]
-
-- **Desktop:**
-  - [Desktop-specific instructions and setup details]
-
-- **Web:**
-  - [Web-specific instructions and setup details]
-
-## Contribute
-
-We welcome contributions! If you'd like to contribute to GloboGist, please check out our [Contribution Guidelines](CONTRIBUTING.md).
-
-## Support
-
-For bug reports, feature requests, or general inquiries, please [open an issue](https://github.com/YourUsername/GloboGist/issues).
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-Stay connected with the world – start using GloboGist today!
-
----
-
-Feel free to customize the README further based on the specifics of your desktop implementation and development environment.
+You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.

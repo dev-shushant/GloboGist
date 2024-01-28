@@ -38,6 +38,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            binaryOption("bundleId", "dev.shushant.globogist")
         }
     }
     
@@ -100,11 +101,24 @@ android {
 compose.desktop {
     application {
         mainClass = "MainKt"
-
+        val iconsRoot = project.file("../composeApp/src/commonMain/resources")
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "dev.shushant.globogist"
             packageVersion = "1.0.0"
+
+            macOS {
+                iconFile.set(iconsRoot.resolve("icon.icns"))
+                bundleID = "dev.shushant.globogist"
+            }
+            windows {
+                iconFile.set(iconsRoot.resolve("icon.ico"))
+                upgradeUuid = "AF792DA6-2EA3-495A-95E5-C3C6CBCB9948"
+                menu = true
+            }
+            linux {
+                iconFile.set(iconsRoot.resolve("icon.png"))
+            }
         }
     }
 }
